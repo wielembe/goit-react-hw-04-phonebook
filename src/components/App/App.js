@@ -10,9 +10,14 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const localContacts = JSON.parse(localStorage.getItem('contacts'));
+    const localContacts = JSON.parse(localStorage.getItem('contacts')) || [];
     setContacts(localContacts);
   }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  //   console.log(contacts);
+  // }, [contacts]);
 
   const addContact = newContact => {
     const isOnList = contacts.find(contact => contact.name === newContact.name);
